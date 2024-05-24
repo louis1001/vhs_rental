@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Always rewrite requests for existing PHP files to index.php
+RewriteCond %{REQUEST_URI} \.php$
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Otherwise, rewrite requests if the requested file or directory does not exist
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
